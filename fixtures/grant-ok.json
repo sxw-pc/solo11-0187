@@ -1,5 +1,15 @@
 [
   {
+    "id": "A1",
+    "kind": "authority",
+    "at": "2026-10-01T00:00",
+    "tenant": "T1",
+    "signer": "procurement-chief",
+    "start": "2026-10-01T00:00",
+    "finish": "2027-01-01T00:00",
+    "status": "active"
+  },
+  {
     "id": "G1",
     "kind": "contract",
     "at": "2026-11-01T00:00",
@@ -13,6 +23,8 @@
     "features": [
       "edit",
       "export"
-    ]
+    ],
+    "signed_by": "procurement-chief",
+    "signed_at": "2026-11-01T00:00"
   }
 ]

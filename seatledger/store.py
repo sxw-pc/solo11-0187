@@ -5,6 +5,7 @@ from pathlib import Path
 
 SCHEMA='''
 CREATE TABLE IF NOT EXISTS evidence(id TEXT PRIMARY KEY, subsystem TEXT NOT NULL, at TEXT NOT NULL, body TEXT NOT NULL, digest TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS authorities(id TEXT PRIMARY KEY, tenant TEXT NOT NULL, signer TEXT NOT NULL, start TEXT NOT NULL, finish TEXT NOT NULL, status TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS contracts(id TEXT PRIMARY KEY, tenant TEXT NOT NULL, product TEXT NOT NULL, version INTEGER NOT NULL, seats INTEGER NOT NULL, start TEXT NOT NULL, finish TEXT NOT NULL, status TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS features(id TEXT NOT NULL, feature TEXT NOT NULL, PRIMARY KEY(id,feature));
 CREATE TABLE IF NOT EXISTS devices(id TEXT PRIMARY KEY, tenant TEXT NOT NULL, fingerprint TEXT NOT NULL, owner TEXT NOT NULL);
@@ -14,8 +15,8 @@ CREATE TABLE IF NOT EXISTS settlements(id TEXT PRIMARY KEY, tenant TEXT NOT NULL
 CREATE TABLE IF NOT EXISTS current_decisions(id TEXT PRIMARY KEY, result TEXT NOT NULL, revision INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS decision_history(id TEXT NOT NULL, revision INTEGER NOT NULL, result TEXT NOT NULL, PRIMARY KEY(id,revision));
 '''
-TABLES=('contracts','features','devices','leases','sessions','settlements')
-SUBSYSTEMS={'contract':'grant','device':'activation','lease':'activation','transfer':'activation','session':'usage'}
+TABLES=('authorities','contracts','features','devices','leases','sessions','settlements')
+SUBSYSTEMS={'authority':'grant','contract':'grant','device':'activation','lease':'activation','transfer':'activation','session':'usage'}
 
 def connect(path):
     if str(path)!=':memory:': Path(path).parent.mkdir(parents=True,exist_ok=True)
@@ -33,7 +34,9 @@ def rebuild(c):
     decisions=calculate(source)
     for e in source:
         kind=e['kind']; id=e['id']
-        if kind=='contract':
+        if kind=='authority':
+            c.execute('INSERT INTO authorities VALUES (?,?,?,?,?,?)',(id,e['tenant'],e['signer'],e['start'],e['finish'],e['status']))
+        elif kind=='contract':
             c.execute('INSERT INTO contracts VALUES (?,?,?,?,?,?,?,?)',(id,e['tenant'],e['product'],e['version'],e['seats'],e['start'],e['finish'],e['status']))
             for feature in e['features']:c.execute('INSERT INTO features VALUES (?,?)',(id,feature))
         elif kind=='device':c.execute('INSERT INTO devices VALUES (?,?,?,?)',(id,e['tenant'],e['fingerprint'],e['owner']))
@@ -72,7 +75,20 @@ def report(c):
 
 def audit(c):
     from .logic import calculate
-    expected=calculate(events(c))
+    source=events(c)
+    expected=calculate(source)
     persisted=report(c)['decisions']
-    return {'ok':expected==persisted,'evidence_count':len(events(c)),
-            'changed':sorted(k for k in set(expected)|set(persisted) if expected.get(k)!=persisted.get(k))}
+    changed=sorted(k for k in set(expected)|set(persisted) if expected.get(k)!=persisted.get(k))
+    replay=connect(':memory:')
+    try:
+        with replay:
+            for e in source:
+                replay.execute('INSERT INTO evidence VALUES (?,?,?,?,?)',
+                    (e['id'],SUBSYSTEMS[e['kind']],e['at'],canonical(e),digest(e)))
+            rebuild(replay)
+        for table in TABLES:
+            current=[tuple(row) for row in c.execute(f'SELECT * FROM {table} ORDER BY 1')]
+            recomputed=[tuple(row) for row in replay.execute(f'SELECT * FROM {table} ORDER BY 1')]
+            if current!=recomputed:changed.append(f'table:{table}')
+    finally:replay.close()
+    return {'ok':not changed,'evidence_count':len(source),'changed':changed}
