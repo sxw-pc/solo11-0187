@@ -1,0 +1,17 @@
+[
+  {
+    "id": "G2",
+    "kind": "contract",
+    "at": "2026-11-20T00:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "version": 2,
+    "seats": 2,
+    "start": "2026-11-01T00:00",
+    "finish": "2026-12-31T23:59",
+    "status": "active",
+    "features": [
+      "edit"
+    ]
+  }
+]

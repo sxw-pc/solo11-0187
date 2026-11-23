@@ -1,0 +1,87 @@
+[
+  {
+    "id": "D1",
+    "kind": "device",
+    "at": "2026-11-01T01:00",
+    "tenant": "T1",
+    "device": "D1",
+    "fingerprint": "fp1",
+    "owner": "user1"
+  },
+  {
+    "id": "D2",
+    "kind": "device",
+    "at": "2026-11-01T01:00",
+    "tenant": "T1",
+    "device": "D2",
+    "fingerprint": "fp2",
+    "owner": "user2"
+  },
+  {
+    "id": "D3",
+    "kind": "device",
+    "at": "2026-11-01T01:00",
+    "tenant": "T1",
+    "device": "D3",
+    "fingerprint": "fp3",
+    "owner": "user3"
+  },
+  {
+    "id": "D4",
+    "kind": "device",
+    "at": "2026-11-01T01:00",
+    "tenant": "T1",
+    "device": "D4",
+    "fingerprint": "fp4",
+    "owner": "user4"
+  },
+  {
+    "id": "L1",
+    "kind": "lease",
+    "at": "2026-11-02T00:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D1",
+    "start": "2026-11-02T00:00",
+    "finish": "2026-12-25T00:00"
+  },
+  {
+    "id": "L2",
+    "kind": "lease",
+    "at": "2026-11-02T00:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D2",
+    "start": "2026-11-02T00:00",
+    "finish": "2026-12-25T00:00"
+  },
+  {
+    "id": "L3",
+    "kind": "lease",
+    "at": "2026-11-02T00:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D3",
+    "start": "2026-11-02T00:00",
+    "finish": "2026-12-25T00:00"
+  },
+  {
+    "id": "TFR1",
+    "kind": "transfer",
+    "at": "2026-11-15T00:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "from_device": "D1",
+    "to_device": "D4"
+  },
+  {
+    "id": "L4",
+    "kind": "lease",
+    "at": "2026-11-15T00:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D4",
+    "start": "2026-11-15T00:00",
+    "finish": "2026-12-25T00:00"
+  }
+]

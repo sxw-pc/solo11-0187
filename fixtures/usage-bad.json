@@ -1,0 +1,46 @@
+[
+  {
+    "id": "S4",
+    "kind": "session",
+    "at": "2026-11-25T10:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D2",
+    "feature": "edit",
+    "start": "2026-11-21T09:00",
+    "finish": "2026-11-21T10:00"
+  },
+  {
+    "id": "S5",
+    "kind": "session",
+    "at": "2026-11-25T10:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D3",
+    "feature": "export",
+    "start": "2026-11-21T09:00",
+    "finish": "2026-11-21T10:00"
+  },
+  {
+    "id": "S6",
+    "kind": "session",
+    "at": "2026-11-25T10:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D4",
+    "feature": "edit",
+    "start": "2026-11-21T09:00",
+    "finish": "2026-11-21T10:00"
+  },
+  {
+    "id": "S7",
+    "kind": "session",
+    "at": "2026-11-25T10:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D3",
+    "feature": "edit",
+    "start": "2026-11-21T09:00",
+    "finish": "2026-11-21T10:00"
+  }
+]

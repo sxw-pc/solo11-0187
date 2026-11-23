@@ -1,0 +1,12 @@
+[
+  {
+    "id": "Ldup",
+    "kind": "lease",
+    "at": "2026-11-21T00:00",
+    "tenant": "T1",
+    "product": "Writer",
+    "device": "D4",
+    "start": "2026-11-21T00:00",
+    "finish": "2026-12-25T00:00"
+  }
+]
