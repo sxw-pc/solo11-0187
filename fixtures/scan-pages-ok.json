@@ -1,1 +1,153 @@
-{"required_build":"v2","pages":[{"epoch":"E1","cursor":"p1","scans":[{"device":"D1","build":"v2","at":"2026-05-01T09:00:00"}]},{"epoch":"E2","cursor":"p2","scans":[{"device":"D2","build":"v2","at":"2026-05-01T09:10:00"}]}],"old_complete":[{"device":"D1","build":"v2","at":"2026-05-01T09:00:00"},{"device":"D2","build":"v1","at":"2026-05-01T09:00:00"}],"new_complete":[{"device":"D1","build":"v2","at":"2026-05-01T09:10:00"},{"device":"D2","build":"v2","at":"2026-05-01T09:10:00"}]}
+{
+  "required_build": "v2",
+  "pages": [
+    {
+      "snapshot": "E1",
+      "epoch": "E1",
+      "cursor": "p1",
+      "next_cursor": "p2",
+      "scans": [
+        {
+          "device": "D1",
+          "build": "v2",
+          "at": "2026-05-01T09:00:00"
+        }
+      ]
+    },
+    {
+      "snapshot": "E2",
+      "epoch": "E2",
+      "cursor": "p2",
+      "next_cursor": null,
+      "scans": [
+        {
+          "device": "D2",
+          "build": "v2",
+          "at": "2026-05-01T09:10:00"
+        }
+      ]
+    }
+  ],
+  "old_complete": [
+    {
+      "device": "D1",
+      "build": "v2",
+      "at": "2026-05-01T09:00:00"
+    },
+    {
+      "device": "D2",
+      "build": "v1",
+      "at": "2026-05-01T09:00:00"
+    }
+  ],
+  "new_complete": [
+    {
+      "device": "D1",
+      "build": "v2",
+      "at": "2026-05-01T09:10:00"
+    },
+    {
+      "device": "D2",
+      "build": "v2",
+      "at": "2026-05-01T09:10:00"
+    }
+  ],
+  "job": {
+    "id": "scan-2026-05-01",
+    "first_cursor": "p1",
+    "snapshot": {
+      "id": "E1",
+      "watermark": 1,
+      "continuation_token": "cur-E1-p2",
+      "expires_at": "2026-05-01T12:00:00",
+      "first_cursor": "p1"
+    },
+    "baseline": {
+      "snapshot": "E1",
+      "watermark": 1,
+      "scans": [
+        {
+          "device": "D1",
+          "build": "v2",
+          "at": "2026-05-01T09:00:00"
+        },
+        {
+          "device": "D2",
+          "build": "v1",
+          "at": "2026-05-01T09:00:00"
+        }
+      ]
+    }
+  },
+  "resume_pages": [
+    {
+      "snapshot": "E1",
+      "epoch": "E1",
+      "cursor": "p2",
+      "next_cursor": null,
+      "scans": [
+        {
+          "device": "D2",
+          "build": "v1",
+          "at": "2026-05-01T09:00:00"
+        }
+      ]
+    }
+  ],
+  "new_snapshot": {
+    "id": "E2",
+    "watermark": 2,
+    "first_cursor": "p1",
+    "paging_changed": true
+  },
+  "rescan_pages": [
+    {
+      "snapshot": "E2",
+      "epoch": "E2",
+      "cursor": "p1",
+      "next_cursor": "p2",
+      "scans": [
+        {
+          "device": "D1",
+          "build": "v2",
+          "at": "2026-05-01T09:10:00"
+        }
+      ]
+    },
+    {
+      "snapshot": "E2",
+      "epoch": "E2",
+      "cursor": "p2",
+      "next_cursor": null,
+      "scans": [
+        {
+          "device": "D2",
+          "build": "v2",
+          "at": "2026-05-01T09:10:00"
+        }
+      ]
+    }
+  ],
+  "probes": {
+    "token_valid": {
+      "token": "cur-E1-p2",
+      "snapshot": "E1",
+      "accepted": true,
+      "checked_at": "2026-05-01T10:00:00",
+      "expires_at": "2026-05-01T12:00:00"
+    },
+    "token_expired": {
+      "token": "cur-E1-p2",
+      "snapshot": "E1",
+      "accepted": true,
+      "checked_at": "2026-05-01T13:00:00",
+      "expires_at": "2026-05-01T12:00:00"
+    },
+    "request_ok_token_wrong": {
+      "token": "other-token",
+      "snapshot": "E1",
+      "accepted": true,
+      "checked_at": "2026-05-01T10:00:00"
+    }
+  }
+}
