@@ -1,0 +1,24 @@
+{
+  "scenario": "offline delivery plan fork: causal merge, same-field amount conflict, attachment root binding",
+  "events": [
+    {"id": "E0", "document_id": "D1", "device": "base", "author": "base", "clock": 0, "parents": [],
+     "action": "set_field", "paragraph_id": "p1", "field": "delivery_day", "value": "周一"},
+    {"id": "E0b", "document_id": "D1", "device": "base", "author": "base", "clock": 0, "parents": ["E0"],
+     "action": "set_field", "paragraph_id": "p2", "field": "amount", "value": 100},
+    {"id": "E0c", "document_id": "D1", "device": "base", "author": "base", "clock": 0, "parents": ["E0b"],
+     "action": "add_attachment", "attachment_id": "att0", "paragraph_id": "p2", "label": "baseline_seal"},
+
+    {"id": "E1", "document_id": "D1", "device": "A", "author": "consultant-A", "clock": 1, "parents": ["E0c"],
+     "action": "set_field", "paragraph_id": "p1", "field": "delivery_day", "value": "周二"},
+    {"id": "E2", "document_id": "D1", "device": "A", "author": "consultant-A", "clock": 2, "parents": ["E1"],
+     "action": "add_attachment", "attachment_id": "att1", "paragraph_id": "p2", "label": "signature"},
+
+    {"id": "E3", "document_id": "D1", "device": "B", "author": "consultant-B", "clock": 1, "parents": ["E0c"],
+     "action": "set_field", "paragraph_id": "p2", "field": "amount", "value": 120},
+    {"id": "E4", "document_id": "D1", "device": "B", "author": "consultant-B", "clock": 2, "parents": ["E3"],
+     "action": "remove_attachment", "attachment_id": "att0"},
+
+    {"id": "E5", "document_id": "D1", "device": "C", "author": "consultant-C", "clock": 1, "parents": ["E2"],
+     "action": "set_field", "paragraph_id": "p2", "field": "amount", "value": 130}
+  ]
+}
