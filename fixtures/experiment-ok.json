@@ -1,0 +1,1 @@
+{"exposures":[{"subject_id":"u1","arm":"A"},{"subject_id":"u2","arm":"B"}],"outcomes":[{"subject_id":"u1","converted":false},{"subject_id":"u2","converted":true}]}
