@@ -1,0 +1,252 @@
+{
+  "experiment": {
+    "id": "editor-v2",
+    "seed": "editor-v2-freeze-262",
+    "frozen_at": "2026-10-31T18:00",
+    "start": "2026-11-01T00:00",
+    "window_end": "2026-11-30T23:59",
+    "stop_threshold": {
+      "min_orgs_per_arm": 3,
+      "min_lift": 0.5,
+      "alpha": 0.05
+    }
+  },
+  "events": [
+    {
+      "id": "ASG-U1",
+      "kind": "assignment",
+      "at": "2026-10-30T09:00",
+      "experiment": "editor-v2",
+      "org_id": "ORG-U1",
+      "arm": "A",
+      "subjects": ["u1"],
+      "domain": "example.com"
+    },
+    {
+      "id": "ASG-U2",
+      "kind": "assignment",
+      "at": "2026-10-30T09:05",
+      "experiment": "editor-v2",
+      "org_id": "ORG-U2",
+      "arm": "B",
+      "subjects": ["u2"],
+      "domain": "example.com"
+    },
+    {
+      "id": "ASG-C3",
+      "kind": "assignment",
+      "at": "2026-10-30T09:10",
+      "experiment": "editor-v2",
+      "org_id": "ORG-C3",
+      "arm": "B",
+      "subjects": ["u3"],
+      "domain": "c3.example"
+    },
+    {
+      "id": "ASG-D4",
+      "kind": "assignment",
+      "at": "2026-10-30T09:15",
+      "experiment": "editor-v2",
+      "org_id": "ORG-D4",
+      "arm": "A",
+      "subjects": ["u4"],
+      "domain": "d4.example"
+    },
+    {
+      "id": "ASG-E5",
+      "kind": "assignment",
+      "at": "2026-10-30T09:20",
+      "experiment": "editor-v2",
+      "org_id": "ORG-E5",
+      "arm": "B",
+      "subjects": ["u5"],
+      "domain": "e5.example"
+    },
+    {
+      "id": "ASG-B7",
+      "kind": "assignment",
+      "at": "2026-10-30T09:25",
+      "experiment": "editor-v2",
+      "org_id": "ORG-B7",
+      "arm": "B",
+      "subjects": ["u7"],
+      "domain": "b7.example"
+    },
+    {
+      "id": "ASG-B8",
+      "kind": "assignment",
+      "at": "2026-10-30T09:30",
+      "experiment": "editor-v2",
+      "org_id": "ORG-B8",
+      "arm": "B",
+      "subjects": ["u8"],
+      "domain": "b8.example"
+    },
+    {
+      "id": "ASG-A7",
+      "kind": "assignment",
+      "at": "2026-10-30T09:35",
+      "experiment": "editor-v2",
+      "org_id": "ORG-A7",
+      "arm": "A",
+      "subjects": ["u9"],
+      "domain": "a7.example"
+    },
+    {
+      "id": "ASG-A8",
+      "kind": "assignment",
+      "at": "2026-10-30T09:40",
+      "experiment": "editor-v2",
+      "org_id": "ORG-A8",
+      "arm": "A",
+      "subjects": ["u10"],
+      "domain": "a8.example"
+    },
+    {
+      "id": "ASG-D4-REINSTALL",
+      "kind": "assignment",
+      "at": "2026-11-10T08:00",
+      "experiment": "editor-v2",
+      "org_id": "ORG-D4",
+      "arm": "B",
+      "subjects": ["u4b"],
+      "domain": "d4.example"
+    },
+    {
+      "id": "EXP-1",
+      "kind": "exposure",
+      "at": "2026-11-05T10:00",
+      "experiment": "editor-v2",
+      "subject_id": "u1",
+      "device_id": "D1",
+      "arm": "A"
+    },
+    {
+      "id": "EXP-2",
+      "kind": "exposure",
+      "at": "2026-11-05T11:00",
+      "experiment": "editor-v2",
+      "subject_id": "u2",
+      "device_id": "D2",
+      "arm": "B"
+    },
+    {
+      "id": "EXP-3",
+      "kind": "exposure",
+      "at": "2026-11-06T10:00",
+      "experiment": "editor-v2",
+      "subject_id": "u3",
+      "device_id": "D3",
+      "arm": "B"
+    },
+    {
+      "id": "EXP-5",
+      "kind": "exposure",
+      "at": "2026-11-07T10:00",
+      "experiment": "editor-v2",
+      "subject_id": "u5",
+      "device_id": "D5",
+      "arm": "B"
+    },
+    {
+      "id": "EXP-7",
+      "kind": "exposure",
+      "at": "2026-11-08T10:00",
+      "experiment": "editor-v2",
+      "subject_id": "u7",
+      "device_id": "D7",
+      "arm": "B"
+    },
+    {
+      "id": "EXP-8",
+      "kind": "exposure",
+      "at": "2026-11-08T11:00",
+      "experiment": "editor-v2",
+      "subject_id": "u8",
+      "device_id": "D8",
+      "arm": "B"
+    },
+    {
+      "id": "EXP-9",
+      "kind": "exposure",
+      "at": "2026-11-09T10:00",
+      "experiment": "editor-v2",
+      "subject_id": "u9",
+      "device_id": "D9",
+      "arm": "A"
+    },
+    {
+      "id": "EXP-10",
+      "kind": "exposure",
+      "at": "2026-11-09T11:00",
+      "experiment": "editor-v2",
+      "subject_id": "u10",
+      "device_id": "D10",
+      "arm": "A"
+    },
+    {
+      "id": "CNV-2",
+      "kind": "conversion",
+      "at": "2026-11-10T12:00",
+      "experiment": "editor-v2",
+      "subject_id": "u2"
+    },
+    {
+      "id": "CNV-3",
+      "kind": "conversion",
+      "at": "2026-11-06T09:00",
+      "experiment": "editor-v2",
+      "subject_id": "u3"
+    },
+    {
+      "id": "CNV-7",
+      "kind": "conversion",
+      "at": "2026-11-12T12:00",
+      "experiment": "editor-v2",
+      "subject_id": "u7"
+    },
+    {
+      "id": "CNV-8",
+      "kind": "conversion",
+      "at": "2026-11-13T12:00",
+      "experiment": "editor-v2",
+      "subject_id": "u8"
+    }
+  ],
+  "late_events": [
+    {
+      "id": "CNV-5",
+      "kind": "conversion",
+      "at": "2026-11-30T22:00",
+      "experiment": "editor-v2",
+      "subject_id": "u5"
+    }
+  ],
+  "identity_evidence": {
+    "tenant_signing": {
+      "id": "IDV-SAME",
+      "kind": "identity",
+      "at": "2026-11-15T00:00",
+      "experiment": "editor-v2",
+      "authority": "tenant_signing",
+      "subjects": ["u1", "u2"],
+      "conclusion": "same_org",
+      "org_id": "ORG-U1",
+      "verified": true
+    },
+    "contract_isolation": {
+      "id": "IDV-INDEP",
+      "kind": "identity",
+      "at": "2026-11-15T00:00",
+      "experiment": "editor-v2",
+      "authority": "contract_isolation",
+      "subjects": ["u1", "u2"],
+      "conclusion": "independent_orgs",
+      "org_map": {
+        "u1": "ORG-U1",
+        "u2": "ORG-U2"
+      },
+      "verified": true
+    }
+  }
+}
