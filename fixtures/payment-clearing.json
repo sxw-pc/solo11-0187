@@ -1,0 +1,189 @@
+{
+  "invoices": {
+    "I1": 100,
+    "I2": 200
+  },
+  "events": [
+    {
+      "id": "E1",
+      "kind": "platform_auth",
+      "at": "2026-11-20T09:00",
+      "entry_id": "P1",
+      "invoice_id": "I1",
+      "amount": 100,
+      "reference": "R-P1"
+    },
+    {
+      "id": "E2",
+      "kind": "platform_clearing",
+      "at": "2026-11-20T09:05",
+      "entry_id": "P1",
+      "invoice_id": "I1",
+      "amount": 100,
+      "platform_batch_id": "C-001",
+      "reference": "R-P1",
+      "status": "success"
+    },
+    {
+      "id": "E3",
+      "kind": "platform_reversal",
+      "at": "2026-11-20T09:20",
+      "entry_id": "P1",
+      "invoice_id": "I1",
+      "amount": 100,
+      "platform_batch_id": "C-002",
+      "reference": "R-P1",
+      "reason": "duplicate_clearing_retry"
+    },
+    {
+      "id": "E4",
+      "kind": "platform_auth",
+      "at": "2026-11-21T10:00",
+      "entry_id": "P2",
+      "invoice_id": "I2",
+      "amount": 200,
+      "reference": "R-P2"
+    },
+    {
+      "id": "E5",
+      "kind": "platform_clearing",
+      "at": "2026-11-21T10:06",
+      "entry_id": "P2",
+      "invoice_id": "I2",
+      "amount": 200,
+      "platform_batch_id": "C-003",
+      "reference": "R-P2",
+      "status": "success"
+    }
+  ],
+  "confirmations": [
+    {
+      "id": "K1",
+      "kind": "receipt",
+      "origin": "platform",
+      "at": "2026-11-20T09:06",
+      "entry_id": "P1",
+      "invoice_id": "I1",
+      "amount": 100,
+      "reference": "R-P1"
+    }
+  ],
+  "path_a_terminal": {
+    "description": "Bank content-rooted statement: 97 net + 3 fee is P1; the reversal is only an internal duplicate-clearing revocation. I1 clears in full.",
+    "statements": [
+      {
+        "batch_id": "B-A1",
+        "bank": "TerminalBank",
+        "root": "e87fd5018accd5036b737ba6f43df45db03d90b09f00f0f10023b013d50bb725",
+        "lines": [
+          {
+            "line_id": "B-A1-1",
+            "entry_id": "P1",
+            "type": "credit",
+            "gross": 100,
+            "net": 97,
+            "fee": 3,
+            "platform_batch_id": "C-001",
+            "reference": "R-P1"
+          },
+          {
+            "line_id": "B-A1-2",
+            "entry_id": "P2",
+            "type": "credit",
+            "gross": 120,
+            "net": 120,
+            "fee": 0,
+            "platform_batch_id": "C-003",
+            "reference": "R-P2"
+          }
+        ]
+      },
+      {
+        "batch_id": "B-A2",
+        "bank": "TerminalBank",
+        "root": "1a5677d842f10551481ce551a5e6abfa4202909f1b751b6b37213b580cd74b78",
+        "lines": [
+          {
+            "line_id": "B-A2-1",
+            "entry_id": "P2",
+            "type": "credit",
+            "gross": 80,
+            "net": 78,
+            "fee": 2,
+            "platform_batch_id": "C-003",
+            "reference": "R-P2"
+          }
+        ]
+      }
+    ]
+  },
+  "path_b_terminal": {
+    "description": "Same-root bank evidence shows the customer chargeback and a platform refund confirmation: the money returned to the payer. I1 stays receivable and K1 must be reversed.",
+    "extra_events": [
+      {
+        "id": "E6",
+        "kind": "platform_refund",
+        "at": "2026-11-22T11:30",
+        "entry_id": "P1",
+        "invoice_id": "I1",
+        "amount": 100,
+        "platform_batch_id": "C-004",
+        "reference": "R-P1",
+        "status": "confirmed"
+      }
+    ],
+    "statements": [
+      {
+        "batch_id": "B-B1",
+        "bank": "TerminalBank",
+        "root": "dc684f9ab7169790bcc6de03d6cbf996d71b5c8a5f500507e1b5670320be6cf7",
+        "lines": [
+          {
+            "line_id": "B-B1-1",
+            "entry_id": "P1",
+            "type": "debit",
+            "gross": 100,
+            "net": 100,
+            "fee": 0,
+            "platform_batch_id": "C-004",
+            "reference": "R-P1"
+          }
+        ]
+      },
+      {
+        "batch_id": "B-B2",
+        "bank": "TerminalBank",
+        "root": "b5d655b16ad614bb0307b1e37a0ab953b7902ba879e660a9ac4d0bb77b4da104",
+        "lines": [
+          {
+            "line_id": "B-B2-1",
+            "entry_id": "P2",
+            "type": "credit",
+            "gross": 120,
+            "net": 120,
+            "fee": 0,
+            "platform_batch_id": "C-003",
+            "reference": "R-P2"
+          }
+        ]
+      },
+      {
+        "batch_id": "B-B3",
+        "bank": "TerminalBank",
+        "root": "ad19939b07205d223a38a15f1a55858076347a4b77b389526fd6b627e4407fc2",
+        "lines": [
+          {
+            "line_id": "B-B3-1",
+            "entry_id": "P2",
+            "type": "credit",
+            "gross": 80,
+            "net": 78,
+            "fee": 2,
+            "platform_batch_id": "C-003",
+            "reference": "R-P2"
+          }
+        ]
+      }
+    ]
+  }
+}
