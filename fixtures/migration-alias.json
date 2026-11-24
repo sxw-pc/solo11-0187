@@ -1,0 +1,14 @@
+{
+  "events": [
+    {"external_id": "1", "source_system": "X", "tenant": "A", "kind": "project", "at": "2026-11-01T09:00", "name": "P", "owner_ref": "X/A/7", "approver_ref": "X/A/7"},
+    {"external_id": "7", "source_system": "X", "tenant": "A", "kind": "contact", "at": "2026-11-01T09:05", "name": "Lin", "aliases": ["Y/A/1"]},
+    {"external_id": "1", "source_system": "Y", "tenant": "A", "kind": "contact", "at": "2026-11-01T09:10", "name": "Lin"},
+    {"external_id": "1", "source_system": "Y", "tenant": "B", "kind": "contact", "at": "2026-11-01T09:15", "name": "Lin"},
+    {"external_id": "2", "source_system": "Y", "tenant": "B", "kind": "project", "at": "2026-11-01T09:20", "name": "Q", "owner_ref": "Y/B/1", "approver_ref": "Y/B/1"},
+    {"external_id": "8", "source_system": "X", "tenant": "B", "kind": "contact", "at": "2026-11-01T09:25", "name": "Cy1", "aliases": ["X/B/9"]},
+    {"external_id": "9", "source_system": "X", "tenant": "B", "kind": "contact", "at": "2026-11-01T09:30", "name": "Cy2", "aliases": ["X/B/8"]},
+    {"external_id": "1", "source_system": "X", "tenant": "B", "kind": "contact", "at": "2026-11-01T09:35", "name": "Mir"},
+    {"external_id": "3", "source_system": "Y", "tenant": "B", "kind": "contact", "at": "2026-11-01T09:40", "name": "Mir"},
+    {"kind": "identity_claim", "claim_id": "CL-1", "at": "2026-11-02T10:00", "members": ["X/A/7", "Y/B/1"], "note": "offline merge desk asserts one person across systems; no tenant signatures yet"}
+  ]
+}
