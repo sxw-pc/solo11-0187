@@ -1,0 +1,1 @@
+{"findings":[{"notice_id":"N1","tenant":"T1","amount":100}],"receipts":[{"notice_id":"N1"}],"cards":[{"vendor":"A","product":"P","annual_price":1000},{"vendor":"B","product":"P","annual_price":1200}],"scans":[{"device":"D1","build":"v2","at":"2026-05-01T09:00:00"},{"device":"D2","build":"v1","at":"2026-05-01T09:01:00"}]}
